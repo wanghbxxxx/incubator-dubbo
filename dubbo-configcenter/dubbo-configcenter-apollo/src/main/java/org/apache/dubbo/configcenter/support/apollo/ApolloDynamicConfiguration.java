@@ -24,7 +24,6 @@ import org.apache.dubbo.common.utils.StringUtils;
 import org.apache.dubbo.configcenter.ConfigChangeEvent;
 import org.apache.dubbo.configcenter.ConfigChangeType;
 import org.apache.dubbo.configcenter.ConfigurationListener;
-import org.apache.dubbo.configcenter.DefaultConfigChangeEvent;
 import org.apache.dubbo.configcenter.DynamicConfiguration;
 
 import com.ctrip.framework.apollo.Config;
@@ -177,7 +176,7 @@ public class ApolloDynamicConfiguration implements DynamicConfiguration {
                     return;
                 }
 
-                ConfigChangeEvent event = new DefaultConfigChangeEvent(key, change.getNewValue(), getChangeType(change));
+                ConfigChangeEvent event = new ConfigChangeEvent(key, change.getNewValue(), getChangeType(change));
                 listeners.forEach(listener -> listener.process(event));
             }
         }

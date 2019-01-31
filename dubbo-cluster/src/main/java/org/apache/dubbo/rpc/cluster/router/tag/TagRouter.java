@@ -25,7 +25,6 @@ import org.apache.dubbo.common.utils.StringUtils;
 import org.apache.dubbo.configcenter.ConfigChangeEvent;
 import org.apache.dubbo.configcenter.ConfigChangeType;
 import org.apache.dubbo.configcenter.ConfigurationListener;
-import org.apache.dubbo.configcenter.DefaultConfigChangeEvent;
 import org.apache.dubbo.configcenter.DynamicConfiguration;
 import org.apache.dubbo.rpc.Invocation;
 import org.apache.dubbo.rpc.Invoker;
@@ -237,7 +236,7 @@ public class TagRouter extends AbstractRouter implements Comparable<Router>, Con
                 application = providerApplication;
                 String rawRule = configuration.getConfig(key);
                 if (rawRule != null) {
-                    this.process(new DefaultConfigChangeEvent(key, rawRule));
+                    this.process(new ConfigChangeEvent(key, rawRule));
                 }
             }
         }
